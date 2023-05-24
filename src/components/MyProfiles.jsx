@@ -155,7 +155,7 @@ const MyProfiles = () => {
                 <span className="rounded-full ">
                   <SiCodechef />
                 </span>
-                Codeforces
+                CodeChef
               </a>
             </Tilt>
           </motion.div>
