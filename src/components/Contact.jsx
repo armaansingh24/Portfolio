@@ -5,10 +5,8 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-
-//T91EFMrT_M4euWwoH
-//template_20x7c1p
-//service_0hq13wj
+import emailjs from '@emailjs/browser';
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
   const formRef = useRef();
@@ -18,14 +16,28 @@ const Contact = () => {
     message: "",
   });
 
+  const changeHandler = (e) => {
+    setFrom({ ...form, [e.target.name]: e.target.value })
+  }
+
   const [loading, setLoading] = useState(false);
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-      setFrom({
-        name: "",
-        value: "",
-        message: "",
-      })
+  const handleSubmit =  (e) => {
+    e.preventDefault();
+    console.log(formRef.current);
+    setLoading(true);
+    emailjs.sendForm('service_iputf9n', 'template_uu396z9', formRef.current, 'T91EFMrT_M4euWwoH')
+      .then((result) => {
+        toast.success('Email sent successfully!')
+      }, (error) => {
+        toast.error("Something went wrong!")
+      });
+    // toast.success('Email sent successfully!');
+    setFrom({
+      name: "",
+      email: "",
+      message: "",
+    })
+    setLoading(false);
   };
 
   return (
@@ -40,8 +52,7 @@ const Contact = () => {
         <form
           ref={formRef}
           className="mt-12 flex flex-col gap-8"
-          action="https://formspree.io/f/mjvdlyvp"
-          method="POST"
+
           onSubmit={handleSubmit}
         >
           <label className="flex flex-col">
@@ -49,6 +60,9 @@ const Contact = () => {
             <input
               type="text"
               name="name"
+              required
+              value={form.name}
+              onChange={changeHandler}
               placeholder="What's your name?"
               className="bg-tertiary py-4 px-6 
               placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
@@ -59,6 +73,8 @@ const Contact = () => {
             <input
               type="email"
               name="email"
+              required
+              value={form.email} onChange={changeHandler}
               placeholder="What's your email?"
               className="bg-tertiary py-4 px-6 
               placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
@@ -68,7 +84,9 @@ const Contact = () => {
             <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
               rows="7"
+              required  
               name="message"
+              value={form.message} onChange={changeHandler}
               placeholder="What do want to say?"
               className="bg-tertiary py-4 px-6 
               placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
@@ -76,7 +94,6 @@ const Contact = () => {
           </label>
 
           <button
-            type="submit"
             className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? "Sending..." : "Send"}

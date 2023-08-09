@@ -4,7 +4,6 @@ import {
   creator,
   web,
   javascript,
-  typescript,
   html,
   css,
   reactjs,
@@ -17,8 +16,9 @@ import {
   jobit,
   dev,
   tripguide,
-  threejs,
 } from "../assets";
+
+import mappoptimist from "../assets/mappoptimist.png"
 
 export const navLinks = [
   {
@@ -99,6 +99,27 @@ const technologies = [
 
 const projects = [
   {
+    name: "MappOptimist- Freelance",
+    description:
+      "Completely responsive static wepage smooth scroll motion.Integrated Nodemailer for smooth communication via email on the website.Collaborated closely with the client to deliver a visually appealing and user-friendly design.Implemented dynamic content rendering based on carousel selections, enhancing user experience",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Nodemailer",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: mappoptimist,
+    source_code_link: "https://www.mappoptimist.com/",
+  },
+  {
     name: "Shopping Cart",
     description:
       "Shopping Cart Front-end design using React/Redux.It is website contain multiple items on its Home page and we can add them into the our cart.In cart we can see our selected items and also total items with total amount. It is fully responsive and Designing is done using Tailwind CSS",
@@ -139,27 +160,6 @@ const projects = [
     ],
     image: jobit,
     source_code_link: "https://github.com/armaansingh24/Password-Generator",
-  },
-  {
-    name: "Weather App",
-    description:
-      "Weather App is a website which tells about the weather of current location of user as well as user can also search the city for which user wants to find out the weather.",
-    tags: [
-      {
-        name: "HTLM",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "CSS",
-        color: "green-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: tripguide,
-    source_code_link: "https://github.com/armaansingh24/weather-app",
   },
   {
     name: "Dev Detective",
