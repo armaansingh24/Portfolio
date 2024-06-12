@@ -49,7 +49,6 @@ const Hero = () => {
                 strings: [
                   "Full Stack Developer",
                   "Web Developer",
-                  "UI-UX Designer",
                   "Backend Developer",
                   "Coder",
                 ],
